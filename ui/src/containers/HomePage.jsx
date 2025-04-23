@@ -1,4 +1,5 @@
-const HomePage = () => {
+function HomePage()
+{
     // VARIABLES/STATE LIVE HERE
   
     // FUNCTIONS/EFFECTS LIVE HERE
