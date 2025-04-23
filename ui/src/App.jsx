@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import HomePage from "./containers/HomePage";
 import "./App.css";
 import AppRoutes from "./AppRoutes";
+import HeaderNavbar from "./components/HeaderNavbar";
 
 function App()
 {
@@ -11,9 +12,12 @@ function App()
 
     // RETURN OF OUR VISUAL STUFF
     return (
-            <Container sx={{display: "flex", height: "90vh",}}>
+        <>
+            <HeaderNavbar />
+            <Container sx={{ display: "flex", height: "90vh", }}>
                 <AppRoutes />
             </Container>
+        </>
     );
 }
 
