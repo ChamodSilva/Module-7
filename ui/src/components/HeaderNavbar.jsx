@@ -16,6 +16,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 const pages = ["Homepage", "Page Two", "Page Three", "Page Four"];
 
 function HeaderNavbar() {
+  const currentUser = 1;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -114,7 +115,7 @@ function HeaderNavbar() {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="User name">
+            <Tooltip title={currentUser}>
               {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}> */}
               <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               {/* </IconButton> */}

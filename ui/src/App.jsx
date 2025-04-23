@@ -13,10 +13,12 @@ function App()
     // RETURN OF OUR VISUAL STUFF
     return (
         <>
-            <HeaderNavbar />
-            <Container sx={{ display: "flex", height: "90vh", }}>
-                <AppRoutes />
-            </Container>
+            <UserProvider useConte>
+                <HeaderNavbar />
+                    <Container sx={{ display: "flex", height: "90vh", }}>
+                        <AppRoutes />
+                    </Container>
+            </UserProvider>
         </>
     );
 }
