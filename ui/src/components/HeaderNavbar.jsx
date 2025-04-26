@@ -12,7 +12,18 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { NavLink } from "react-router-dom";
 
+const pagesConfig =
+[
+  {label: "Home", url: ""},
+  {label: "Page 2", url: "/page-two"},
+  {label: "Page 3", url: "/page-three"},
+  {label: "Page 4", url: "/page-four"},
+  {label: "Lab 1", url: "/lab-one"},
+  {label: "Lab 2", url: "/lab-two"},
+  {label: "Lab 3", url: "/lab-three"},
+]
 const pages = ["Homepage", "Page Two", "Page Three", "Page Four"];
 
 function HeaderNavbar() {
@@ -89,7 +100,7 @@ function HeaderNavbar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href=""
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -104,14 +115,11 @@ function HeaderNavbar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+            {pagesConfig.map((page) =>
+            (
+              <NavLink key={page.label} to={page.url}>
+                {page.label}
+              </NavLink>
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>

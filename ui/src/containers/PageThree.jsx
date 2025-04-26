@@ -11,16 +11,16 @@ function PageThree()
     // FUNCTIONS/EFFECTS LIVE HERE
     function displayUserGreeting()
     {
-        if()
+        if(currentUser)
         {
-            return `Hello, ${currentUser}, `
+            return `Hello ${currentUser}, `;
         }
-    }
+    };
 
     // RETURN LIVES HERE
     return (
         <Box>
-            <Typography>This is page three</Typography>
+            <Typography>{displayUserGreeting()}This is page three</Typography>
             <Typography>{id}</Typography>
         </Box>
     );

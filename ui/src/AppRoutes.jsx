@@ -3,6 +3,9 @@ import HomePage from "./containers/HomePage";
 import { Routes, Route } from "react-router-dom";
 import PageThree from "./containers/PageThree";
 import PageFour from "./containers/PageFour";
+import LabOne from "./containers/LabOne";
+import LabTwo from "./containers/LabTwo";
+import LabThree from "./containers/LabThree";
 
 function AppRoutes(props)
 {
@@ -10,6 +13,12 @@ function AppRoutes(props)
         <Routes>
             {/* index matches on default/home URL: / */}
             <Route index element={<HomePage />} />
+
+            <Route path="/lab-one" element={<LabOne />} />
+
+            <Route path="/lab-two" element={<LabTwo />} />
+            
+            <Route path="/lab-three" element={<LabThree />} />
 
             <Route path="/page-two" element={<Typography>Page 2</Typography>} />
 

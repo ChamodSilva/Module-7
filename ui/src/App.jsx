@@ -3,6 +3,8 @@ import HomePage from "./containers/HomePage";
 import "./App.css";
 import AppRoutes from "./AppRoutes";
 import HeaderNavbar from "./components/HeaderNavbar";
+import { UserProvider } from "./stores/userStore";
+import { DataProvider } from "./stores/dataStore";
 
 function App()
 {
@@ -13,11 +15,13 @@ function App()
     // RETURN OF OUR VISUAL STUFF
     return (
         <>
-            <UserProvider useConte>
-                <HeaderNavbar />
+            <UserProvider username={"Guest"}>
+                <DataProvider>
+                    <HeaderNavbar />
                     <Container sx={{ display: "flex", height: "90vh", }}>
                         <AppRoutes />
                     </Container>
+                </DataProvider>
             </UserProvider>
         </>
     );

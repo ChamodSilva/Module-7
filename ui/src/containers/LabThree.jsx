@@ -1,0 +1,34 @@
+import { Box, Typography, Select, MenuItem } from "@mui/material";
+import { useDataContext, emojiStatus } from "../stores/dataStore";
+
+
+function LabThree()
+{
+    const { emoji, displayEmojiHandler } = useDataContext();
+
+    function handleChange(event)
+    {
+        displayEmojiHandler(event.target.value);
+    };
+
+    return (
+        <Box>
+            <Typography>Lab Three</Typography>
+            <Typography variant="h4">{emoji}</Typography>
+
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={emoji}
+                label="Emoji State"
+                onChange={handleChange}
+            >
+                <MenuItem value={emojiStatus.happy}>Happy</MenuItem>
+                <MenuItem value={emojiStatus.throwTable}>Throw</MenuItem>
+                <MenuItem value={emojiStatus.unhappy}>Unhappy</MenuItem>
+            </Select>
+        </Box>
+    );
+};
+
+export default LabThree;

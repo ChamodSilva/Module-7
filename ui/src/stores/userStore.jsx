@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 // 1. Create the context
-const UserContext = React.createContext();
+const UserContext = createContext();
 
 // 2. Create the higher component
 export function UserProvider({children, username})
@@ -15,7 +15,6 @@ export function UserProvider({children, username})
     );
 };
 
-//3 Export
 export function useUserContext()
 {
     return useContext(UserContext);

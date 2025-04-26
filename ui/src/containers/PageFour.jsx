@@ -4,16 +4,16 @@ import { useSearchParams } from "react-router-dom"
 function PageFour()
 {
     // VARIABLES/STATE LIVE HERE
-    // const [searchParams, setSearchParams] = useSearchParams();
-    // const searchParamsOfSomething
+    const [searchParams] = useSearchParams();
+    const searchParamOfSomething = searchParams.get("id");
 
     // FUNCTIONS/EFFECTS LIVE HERE
 
     // RETURN LIVES HERE
     return (
         <Box>
-            <Typography></Typography>
-            <Typography></Typography>
+            <Typography>This is page four</Typography>
+            <Typography>{searchParamOfSomething}</Typography>
         </Box>
     );
 };
