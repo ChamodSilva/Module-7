@@ -1,31 +1,49 @@
 import { useState, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  TextField,
+import useQuery from "../hooks/useQuery";
+import
+{
+    Box,
+    Typography,
+    InputLabel,
+    MenuItem,
+    FormControl,
+    Select,
+    TextField,
 } from "@mui/material";
 
-const currencies = [
-  { name: "USD", symbol: "$" },
-  { name: "AUD", symbol: "$" },
-  { name: "NZD", symbol: "$" },
-  { name: "GBP", symbol: "£" },
-  { name: "EUR", symbol: "€" },
-  { name: "SGD", symbol: "$" },
+const currencies =
+[
+    { name: "USD", symbol: "$" },
+    { name: "AUD", symbol: "$" },
+    { name: "NZD", symbol: "$" },
+    { name: "GBP", symbol: "£" },
+    { name: "EUR", symbol: "€" },
+    { name: "SGD", symbol: "$" },
 ];
-import useQuery from "../hooks/useQuery";
 
 function BitcoinRates()
 {
-    const [currency, setCurrency] = useState(currencies[0].name);
+    const [searchParams] = useSearchParams();
+    const optionalCur = searchParams.get("currency")
+    const [currency, setCurrency] = useState(optionalCur ? optionalCur : currencies[0].name);
+    const [data, isLoading] = useQuery(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}`);
     const [currencySymbol, setCurrencySymbol] = useState(currencies[0].symbol);
-    // fetch URL: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}
-    
-    // State to capture the return
+    const [BitcoinRates, setBitcoinRates] = useState();
+
+    useEffect(() =>
+    {
+        fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}`)
+            .then(() => response.json())
+            .then((data) =>
+            {
+                console.log(data, data.bitcoin[currency.toLowerCase()])
+                setBitcoinRates(data.bitcoin[currency.toLowerCase()])
+            })
+            .catch((error) => console.error("Error fetching data", error));
+        console.log("Effect is applied");
+        return () => {console.log("Cleaning up!")};
+    }, [currency]);
+
 
     const handleCurrencySelection = (e) =>
     {

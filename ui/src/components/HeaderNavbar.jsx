@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink } from "react-router-dom";
+import { color } from "@mui/system";
 
 const pagesConfig =
 [
@@ -58,7 +59,7 @@ function HeaderNavbar() {
               textDecoration: "none",
             }}
           >
-            Module 7 Part 2
+            Module 7 Labs
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -88,9 +89,12 @@ function HeaderNavbar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+              {pagesConfig.map((page) =>
+              (
+                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                  <NavLink to={page.url}>
+                    {page.label}
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>

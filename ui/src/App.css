@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+a.active
+{
+  color: navajowhite;
+}
+
+a
+{
+  color: white;
+}
