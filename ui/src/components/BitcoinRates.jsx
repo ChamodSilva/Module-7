@@ -29,20 +29,22 @@ function BitcoinRates()
     const [data, isLoading] = useQuery(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}`);
     const [currencySymbol, setCurrencySymbol] = useState(currencies[0].symbol);
     const [BitcoinRates, setBitcoinRates] = useState();
+    const [userInput, setUserInput] = useState();
+
 
     useEffect(() =>
     {
-        fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}`)
-            .then(() => response.json())
-            .then((data) =>
+        const getCurrencyFromQueryData = (data, key) =>
+        {
+            if (data && keu)
             {
-                console.log(data, data.bitcoin[currency.toLowerCase()])
-                setBitcoinRates(data.bitcoin[currency.toLowerCase()])
-            })
-            .catch((error) => console.error("Error fetching data", error));
-        console.log("Effect is applied");
-        return () => {console.log("Cleaning up!")};
-    }, [currency]);
+                setResult(data.bitcoin[key]);
+            }
+        };
+        
+        getCurrencyFromQueryData(data, currency.toLowerCase());
+        console.log("data", data);
+    }, [data]);
 
 
     const handleCurrencySelection = (e) =>
