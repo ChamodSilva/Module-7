@@ -11,13 +11,17 @@ export function useQuery(url)
         if (url)
         {
             let ignore = false;
+            setIsLoading(true);
             fetch(url).then(response => response.json()).then(json =>
             {
                 if (!ignore)
                 {
                     setData(json);
                 }
-            });
+            }).finally(() =>
+            {
+                setIsLoading(false);
+            })
             // cleanup function, in case url changes before complete
             return () =>
             {

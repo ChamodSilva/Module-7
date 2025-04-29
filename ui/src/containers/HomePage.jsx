@@ -6,10 +6,10 @@ function HomePage()
   
     // RETURN LIVES HERE
     return (
-      <div>
-        <p>This is a pure component</p>
-      </div>
+        <div>
+            <p>This is the Homepage!</p>
+        </div>
     );
-  };
+};
 
 export default HomePage;

@@ -18,9 +18,6 @@ import { color } from "@mui/system";
 const pagesConfig =
 [
   {label: "Home", url: ""},
-  {label: "Page 2", url: "/page-two"},
-  {label: "Page 3", url: "/page-three"},
-  {label: "Page 4", url: "/page-four"},
   {label: "Lab 1", url: "/lab-one"},
   {label: "Lab 2", url: "/lab-two"},
   {label: "Lab 3", url: "/lab-three"},
@@ -55,7 +52,7 @@ function HeaderNavbar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              eolor: "inherit",
               textDecoration: "none",
             }}
           >

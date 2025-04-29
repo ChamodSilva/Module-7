@@ -18,7 +18,7 @@ function App()
             <UserProvider username={"Guest"}>
                 <DataProvider>
                     <HeaderNavbar />
-                    <Container sx={{ display: "flex", height: "90vh", }}>
+                    <Container sx={{ display: "flex", height: "90vh", justifyContent: "center", backgroundColor: "#2b586b"}}>
                         <AppRoutes />
                     </Container>
                 </DataProvider>

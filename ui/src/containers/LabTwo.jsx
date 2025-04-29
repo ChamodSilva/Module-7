@@ -10,7 +10,8 @@ function LabTwo()
     // RETURN LIVES HERE
     return (
         <Box>
-            <Typography>This is page four</Typography>
+            <Typography>This is Lab Two</Typography>
+            <BitcoinRates />
         </Box>
     );
 };

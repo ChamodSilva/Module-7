@@ -13,13 +13,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* .Box
+{
+    justify-content: "center";
+} */
+
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #ff7b69;
 }
 
 body {

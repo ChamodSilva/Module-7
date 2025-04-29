@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useQuery from "../hooks/useQuery";
+import { useSearchParams } from "react-router-dom";
 import
 {
     Box,
@@ -9,7 +10,9 @@ import
     FormControl,
     Select,
     TextField,
+    Skeleton,
 } from "@mui/material";
+import { blue, grey } from "@mui/material/colors";
 
 const currencies =
 [
@@ -20,7 +23,6 @@ const currencies =
     { name: "EUR", symbol: "€" },
     { name: "SGD", symbol: "$" },
 ];
-
 function BitcoinRates()
 {
     const [searchParams] = useSearchParams();
@@ -30,13 +32,15 @@ function BitcoinRates()
     const [currencySymbol, setCurrencySymbol] = useState(currencies[0].symbol);
     const [BitcoinRates, setBitcoinRates] = useState();
     const [userInput, setUserInput] = useState();
+    const [result, setResult] = useState();
+    const [amount, setAmount] = useState(1);
 
 
     useEffect(() =>
     {
         const getCurrencyFromQueryData = (data, key) =>
         {
-            if (data && keu)
+            if (data && key)
             {
                 setResult(data.bitcoin[key]);
             }
@@ -45,7 +49,6 @@ function BitcoinRates()
         getCurrencyFromQueryData(data, currency.toLowerCase());
         console.log("data", data);
     }, [data]);
-
 
     const handleCurrencySelection = (e) =>
     {
@@ -59,6 +62,23 @@ function BitcoinRates()
         setCurrency(e.target.value);
     };
     
+    function calculateBitcoinPrice(pricePerOne, amount)
+    {
+        console.log(pricePerOne, amount);
+        return pricePerOne * amount;
+    }
+    
+    function resultDisplayHandler()
+    {
+        return isLoading ? (<Skeleton width={'400px'} height={'100px'} />) : 
+        (
+            <Typography>
+                {userInput} x Bitcoin = {currencySymbol}{" "}
+                {BitcoinRates ? (userInput * BitcoinRates).toLocaleString() : ""}
+            </Typography>
+        )
+    }
+
     const currencyOptions = currencies.map((curr) =>
     (
         <MenuItem value={curr.name} key={curr.name}>
@@ -76,6 +96,7 @@ function BitcoinRates()
                 placeholder={currencySymbol}
                 label="Amount"
                 variant="outlined"
+                onChange={(e) => setUserInput(e.target.value)}
                 />
                 <FormControl sx={{ m: 1 }}>
                     <InputLabel id="currency-rates-label">Currency</InputLabel>
@@ -89,6 +110,7 @@ function BitcoinRates()
                         {currencyOptions}
                     </Select>
                 </FormControl>
+                {resultDisplayHandler()}
             </Box>
         </>
     );
